@@ -1,0 +1,9 @@
+{
+  "title": "Add a note",
+  "note": "Note",
+  "notefield": "Add your notes here",
+  "field": "Existing entry",
+  "tag": "Add tag here",
+  "box": "Save",
+  "alert": "Your note is saved"
+}

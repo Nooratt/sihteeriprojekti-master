@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WELCOME</title>
+    <script type="module" src="./registry.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/login.css">
+</head>
+<body>
+<img src="img/moicculogobutton.png" id="moicculogo"/>
+
+<h1>Let's get you your own secretary!</h1>
+
+<div class="reg.">
+    <form>
+        <label for="fname">First Name</label>
+        <input type="text" id="fname" name="fname" placeholder="First Name" pattern="[A-Za-z]{2,}"> <br><br>
+
+        <label for="lname">Last Name</label>
+        <input type="text" id="lname" name="lname" placeholder="Last Name" pattern="[A-Za-z]{2,}"> <br><br>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"><br><br>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"><br><br>
+
+        <label for="confirm_password">Confirm password</label>
+        <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm password"><br><br>
+
+        <button id="button" type="button">Submit</button>
+
+    </form>
+
+
+</div>
+
+</body>
+</html>

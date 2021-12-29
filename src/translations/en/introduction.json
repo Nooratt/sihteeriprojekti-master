@@ -1,0 +1,38 @@
+{
+  "introtitle": "Moiccu!\n Welcome to your own moiccu.-app",
+  "intro1":"Here in moiccu you can create entries and events to your personal calendar,",
+  "intro2":"add contacts, create groups, view your group calendar, make notes and link them into your calendar,",
+
+  "calendartitle": "Calendar",
+  "calendar1": "In your calendar you can see all your own entries and the events you have signed up for",
+  "calendar2":"Clicking the chosen day you can add an entry or an event to that day.",
+  "calendar3": "You can view desired event or entry closer by clicking.",
+  "calendar4":" if you want to create a private entry, something only you can see, select PRIVATE while creating the entry.",
+  "calendar5": "On the right side of the calendar all of your groups are color coded by our preference.",
+  "calendar6": "By clicking the group, you can overlay your calendar with the group members' calendars.",
+  "calendar7": "Below the calendar you can see all of your categories. With the help of the categories you can filter the events and entries you want to see.",
+  "calendar8": "You can choose whether to view your calendar with a week view or a month view.",
+
+  "profiletitle":"Profile",
+  "profile1":"You can see our profiles data by clicking the profile icon on the left sidebar. EDIT allows you to edit your informations.",
+  "profile2":"All of the field need to be filled up. Save the changes by pressing SAVE.",
+  "profile3":"You can also set a profile picture for yourself. the picture can be changed later. ",
+  "profile4":"Other settings can be changed by clicking the cogwheel on the right upper corner.",
+
+  "settingstitle":"Settings",
+  "settings1":"Settings are divided to three different sections; general settings, privacy settings and notification settings.",
+  "settings2": "in general settings you can define your categories, which allows you to filter events and entries showing in your calendar.",
+  "settings3": "You can create as many categories as you wish and delete those you are not using anymore.",
+  "settings4":"If you delete a category, all the events and entries in that category changes as uncategorized. In general settings you can also define the language of the app.",
+  "settings5":"In the privacy settings you can decide who sees you personal data. You can define separately the settings of your calendars and personal datas visibily.",
+  "settings6":"If you set the visibility of you profile to NO-ONE or CONTACTS, your profile can not be seen while searching.",
+  "settings7":"If you wish to use the app as your personal calendar only, set both of the privacy settings to NO-ONE.",
+  "settings8": "This way no one can find your profile or view your calendar. In the notification settings you can choose between email notification and app notification.",
+  "settings9":"You can set separate notification methods for invites, responses, events and entries. ",
+  "settings11":"You can also disable notifications and reminders if you wish.",
+
+  "grouptitle":"Groups and contacts",
+  "group1":"You can create groups and invite other users to join them",
+  "group2": "Everyones entries and events are shown in the group calendar",
+  "group3":"You can also invite other users to contact with you. You can set different visibility settings to your contacts."
+}

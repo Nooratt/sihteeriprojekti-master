@@ -1,0 +1,11 @@
+{
+  "emailPasswordWrong":"Sähköposti tai salasana on väärin",
+  "passwordSent":"Uusi salasana lähetettiin sähköpostiisi",
+  "nameNotCorrect":"Nimessä oltava yli kaksi kirjainta",
+  "emailNotCorrect":"Sähköpostin oltava oikea",
+  "passwordsDontMatch":"Salasanat eivät ole samat",
+  "addingSuccessful":"lisätty",
+  "addFail":"Palvelinvirhe, virheen jatkuessa ole yhteydessä meihin"
+
+
+}

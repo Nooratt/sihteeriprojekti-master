@@ -1,0 +1,13 @@
+{
+  "registryTitle":"Rekisteröi oma moiccu.:si",
+  "firstName":"Nimi",
+  "firstNamePlaceholder":"Mirccu",
+  "lastName":"Sukunimi",
+  "lastNamePlaceholder":"Moiccu",
+  "email":"Sähköposti",
+  "emailPlaceholder":"moiccu.mirccu@maili.fi",
+  "password":"Salasana",
+  "passwordPlaceholder":"Salasana1",
+  "confirmPassword":"Vahvista salasana",
+  "submitButton":"Lähetä"
+}

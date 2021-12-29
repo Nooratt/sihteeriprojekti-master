@@ -1,0 +1,133 @@
+.icon {
+    margin-left: 20px;
+    cursor: pointer;
+    transition: .2s ease;
+}
+#iconLogo {
+    float: left;
+    display: inline;
+    background: url("../img/moicculogo.png") center no-repeat;
+    background-size: cover;
+    width: 200px;
+    height: 50px;
+    margin-right: 1%;
+}
+
+#iconProfile {
+    position: absolute;
+    background: url("../img/profileicon.png") center no-repeat;
+    background-size: cover;
+    width: 60px;
+    height: 60px;
+    margin-top: 10px;
+}
+#iconProfile:hover {
+    background: url("../img/profileicon_onhover.png") center no-repeat;
+    background-size: cover;
+}
+#iconSettings {
+    float: right;
+    display: inline;
+    background: url("../img/settingsicon.png") center no-repeat;
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+    margin-right: 1%;
+}
+#iconHelp {
+    float: right;
+    display: inline;
+    background: url("../img/helpicon.png") center no-repeat;
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+    margin-right: 1%;
+}
+#iconHelp:hover {
+    background: url("../img/helpicon_onhover.png") center no-repeat;
+    background-size: cover;
+}
+#iconSettings:hover {
+    background: url("../img/settingsicon_onhover.png") center no-repeat;
+    background-size: cover;
+}
+#iconBell {
+    float: right;
+    display: inline;
+    background: url("../img/bellicon.png") center no-repeat;
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+    margin-right: 1%;
+}
+#iconBell:hover {
+    background: url("../img/bellicon_onhover.png") center no-repeat;
+    background-size: cover;
+}
+#iconGroup{
+    position:absolute;
+    background: url("../img/groupicon.png") center no-repeat;
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+    margin-top: 100px;
+}
+#iconGroup:hover {
+    background: url("../img/groupicon_onhover.png") center no-repeat;
+    background-size: cover;
+}
+
+#iconEvent {
+    position: absolute;
+    background: url("../img/eventicon.png") center no-repeat;
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+    margin-top: 200px;
+}
+#iconEvent:hover {
+    background: url("../img/eventicon_onhover.png") center no-repeat;
+    background-size: cover;
+}
+#iconEntry {
+    position: absolute;
+    background: url("../img/entryicon.png") center no-repeat;
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+    margin-top: 300px;
+}
+#iconEntry:hover {
+    background: url("../img/entryicon_onhover.png") center no-repeat;
+    background-size: cover;
+}
+#iconNote {
+    position: absolute;
+    background: url("../img/noteicon.png") center no-repeat;
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+    margin-top: 400px;
+}
+#iconNote:hover {
+    background: url("../img/noteicon_onhover.png") center no-repeat;
+    background-size: cover;
+}
+
+
+#toggle-1 {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+}
+.toggle {
+    -webkit-appearance: textarea;
+    -moz-appearance: textfield;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+}
+#toggle-1:checked ~ .sidebar {
+    width: 40%;
+    transition: .3s ease;
+}

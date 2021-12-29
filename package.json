@@ -1,0 +1,61 @@
+{
+  "name": "sihteeriprojekti",
+  "version": "1.0.0",
+  "description": "moi kaikki",
+  "main": ".js",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.4",
+    "crypto-js": "^3.1.9-1",
+    "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "formidable": "^1.2.1",
+    "i18next": "^15.1.0",
+    "i18next-browser-languagedetector": "^3.0.1",
+    "jsdoc": "^3.5.5",
+    "jsonwebtoken": "^8.5.1",
+    "mocha": "^5.2.0",
+    "moment": "^2.24.0",
+    "multer": "^1.4.1",
+    "mysql": "^2.16.0",
+    "mysql2": "^1.6.5",
+    "nodemailer": "^5.1.1",
+    "nyc": "^13.3.0",
+    "password-hash": "^1.2.2",
+    "react": "^16.8.1",
+    "react-calendar": "^2.18.1",
+    "react-dom": "^16.8.1",
+    "react-i18next": "^10.9.0",
+    "react-localization": "^1.0.13",
+    "react-scripts": "^2.1.8",
+    "react-simple-popover": "^0.2.4",
+    "react-simple-tooltip": "^2.5.0",
+    "sequelize": "^4.42.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "reacttest": "react-scripts test",
+    "test": "nyc --reporter=text mocha",
+    "test-with-coverage": "nyc --reporter=html --reporter=text mocha",
+    "coverage": "nyc report --reporter=text-lcov mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/nooratur/sihteeriprojekti.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/nooratur/sihteeriprojekti/issues"
+  },
+  "homepage": ".",
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

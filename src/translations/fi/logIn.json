@@ -1,0 +1,10 @@
+{
+  "logInTitle":"Kirjaudu sisään",
+  "email":"Sähköposti",
+  "emailPlaceholder":"mirccu.moiccu@maili.fi",
+  "password":"Salasana",
+  "passwordPlaceholder":"Salasana1",
+  "submitButton":"Kirjaudu",
+  "forgotLink":"Unohditko salasanasi?",
+  "registerLink":"Rekisteröidy"
+}

@@ -1,0 +1,14 @@
+{
+
+  "title": "Luo uusi tapahtuma",
+  "formtitle": "Tapahtuman nimi",
+  "date": "Tapahtuman päivämäärä",
+  "timetime": "Aloitusaika",
+  "endtime":"Lopetusaika (ei pakollinen)",
+  "description": "Tapahtuman kuvaus (ei pakollinen)",
+  "category":"Kategoria",
+  "guests": "Vieraat",
+  "attendees": "Osallistujat",
+  "save": "Tallenna"
+
+}

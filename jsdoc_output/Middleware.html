@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Class: Middleware</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Class: Middleware</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2><span class="attribs"><span class="type-signature"></span></span>Middleware<span class="signature">()</span><span class="type-signature"></span></h2>
+        
+            <div class="class-description">Middleware contains functions run before certain express paths.Each function must be called after eg. app.get('profiles', middlewareFunction (req,res) => {})</div>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+    
+    <h2>Constructor</h2>
+    
+
+    
+    <h4 class="name" id="Middleware"><span class="type-signature"></span>new Middleware<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="middleware.js.html">middleware.js</a>, <a href="middleware.js.html#line8">line 8</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="addAccountIdToRequest"><span class="type-signature">(async) </span>addAccountIdToRequest<span class="signature">(req:, res:, next:)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Function checks request for user authorization, verifies the JWT token, and inputs the user's account id into req.app.locals.accId
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>req:</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Express automatically creates this request object, must be given as parameter from upper level</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>res:</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Express automatically creates this response object, must be given as parameter from upper level</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>next:</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">We can define the next middleware function to be resolved.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="middleware.js.html">middleware.js</a>, <a href="middleware.js.html#line29">line 29</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    A modified response in case something is missing or the function cannot resolve through its happy path
+</div>
+
+
+
+    
+
+
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="CalendarDemo.html">CalendarDemo</a></li><li><a href="Entry.html">Entry</a></li><li><a href="Event.html">Event</a></li><li><a href="Groups.html">Groups</a></li><li><a href="Help.html">Help</a></li><li><a href="Middleware.html">Middleware</a></li><li><a href="Note.html">Note</a></li><li><a href="Profile.html">Profile</a></li><li><a href="Settings.html">Settings</a></li><li><a href="TabMenu.html">TabMenu</a></li><li><a href="TokenHandler.html">TokenHandler</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addContact">addContact</a></li><li><a href="global.html#addEntry">addEntry</a></li><li><a href="global.html#addEvent">addEvent</a></li><li><a href="global.html#ajaxFunction">ajaxFunction</a></li><li><a href="global.html#app">app</a></li><li><a href="global.html#bodyParser">bodyParser</a></li><li><a href="global.html#checkPassword">checkPassword</a></li><li><a href="global.html#checkUserCredentials">checkUserCredentials</a></li><li><a href="global.html#contactCallback">contactCallback</a></li><li><a href="global.html#cookieParser">cookieParser</a></li><li><a href="global.html#createCategory">createCategory</a></li><li><a href="global.html#createGroup">createGroup</a></li><li><a href="global.html#database">database</a></li><li><a href="global.html#deleteAccountAndAssociations">deleteAccountAndAssociations</a></li><li><a href="global.html#deleteCategory">deleteCategory</a></li><li><a href="global.html#deleteEventAndInvitees">deleteEventAndInvitees</a></li><li><a href="global.html#deleteFromBackend">deleteFromBackend</a></li><li><a href="global.html#editDate">editDate</a></li><li><a href="global.html#express">express</a></li><li><a href="global.html#getCalendarEntries">getCalendarEntries</a></li><li><a href="global.html#getCalendarEvents">getCalendarEvents</a></li><li><a href="global.html#getCalendarId">getCalendarId</a></li><li><a href="global.html#getContactProfiles">getContactProfiles</a></li><li><a href="global.html#getContacts">getContacts</a></li><li><a href="global.html#getEventsWhereInvited">getEventsWhereInvited</a></li><li><a href="global.html#getFromBackend">getFromBackend</a></li><li><a href="global.html#getGroupEntries">getGroupEntries</a></li><li><a href="global.html#getGroupEvents">getGroupEvents</a></li><li><a href="global.html#getGroupMembers">getGroupMembers</a></li><li><a href="global.html#getMemberProfiles">getMemberProfiles</a></li><li><a href="global.html#getMyCategories">getMyCategories</a></li><li><a href="global.html#getMyGroupIds">getMyGroupIds</a></li><li><a href="global.html#getMyGroups">getMyGroups</a></li><li><a href="global.html#getPlainContactIds">getPlainContactIds</a></li><li><a href="global.html#getPlainEventIds">getPlainEventIds</a></li><li><a href="global.html#getPlainMemberIds">getPlainMemberIds</a></li><li><a href="global.html#getProfileByAccId">getProfileByAccId</a></li><li><a href="global.html#getUser">getUser</a></li><li><a href="global.html#getUserInfoForDocument">getUserInfoForDocument</a></li><li><a href="global.html#getUsers">getUsers</a></li><li><a href="global.html#getWithoutParameters">getWithoutParameters</a></li><li><a href="global.html#handleReadyStateChange">handleReadyStateChange</a></li><li><a href="global.html#logIn">logIn</a></li><li><a href="global.html#myCallback">myCallback</a></li><li><a href="global.html#nodemailer">nodemailer</a></li><li><a href="global.html#orm">orm</a></li><li><a href="global.html#path">path</a></li><li><a href="global.html#port">port</a></li><li><a href="global.html#postPic">postPic</a></li><li><a href="global.html#postToBackend">postToBackend</a></li><li><a href="global.html#registerUserToDB">registerUserToDB</a></li><li><a href="global.html#registryMail">registryMail</a></li><li><a href="global.html#saveRegistry">saveRegistry</a></li><li><a href="global.html#searchGuest">searchGuest</a></li><li><a href="global.html#secret">secret</a></li><li><a href="global.html#submitting">submitting</a></li><li><a href="global.html#takeResponse">takeResponse</a></li><li><a href="global.html#updateBackend">updateBackend</a></li><li><a href="global.html#updateCalPrivacy">updateCalPrivacy</a></li><li><a href="global.html#updateNotifications">updateNotifications</a></li><li><a href="global.html#updateProfilePrivacy">updateProfilePrivacy</a></li><li><a href="global.html#updateUserInfo">updateUserInfo</a></li><li><a href="global.html#url">url</a></li><li><a href="global.html#validateFname">validateFname</a></li><li><a href="global.html#validateLname">validateLname</a></li><li><a href="global.html#validateMail">validateMail</a></li><li><a href="global.html#validatePassword">validatePassword</a></li><li><a href="global.html#.onclick">.onclick</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Thu May 09 2019 16:45:37 GMT+0300 (Suomen kesäaika)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

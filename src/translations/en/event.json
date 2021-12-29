@@ -1,0 +1,12 @@
+{
+    "title": "Create a new event",
+    "formtitle": "Event name",
+    "date": "Event date",
+    "timetime": "Starting time",
+    "endtime":"Ending time (optional)",
+    "description": "Event description (optional)",
+    "category":"Category",
+    "guests": "Guests",
+    "attendees":"Attendees",
+    "save": "Save"
+}

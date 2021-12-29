@@ -1,0 +1,9 @@
+{
+  "title": "Lisää muistiinpano",
+  "note": "Muistiinpano",
+  "notefield": "Kirjoita muistiinpanosi tähän",
+  "field": "Olemassa oleva entry",
+  "tag": "Lisää tunniste",
+  "box": "Tallenna,",
+  "alert": "Muistiinpanosi on tallennettu"
+}

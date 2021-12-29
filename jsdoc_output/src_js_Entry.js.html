@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: src/js/Entry.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: src/js/Entry.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react';
+import '../css/event.css';
+import {postToBackend} from "./Ajax";
+import {withTranslation} from "react-i18next";
+import Tooltip from "react-simple-tooltip";
+
+
+let self;
+let en, et, ed, tu, mu, hi;
+
+/**
+ * Class for the React component Entry
+ *  - rendered when user is creating a new entry
+ * @author Markus Ojajärvi, Julia Virtanen, Noora Turunen
+ */
+class Entry extends React.Component {
+    constructor(props) {
+        super(props);
+        self = this;
+
+        //Entry-Refs
+        this.entryTab = React.createRef();
+        this.entryName = React.createRef();
+        this.entryDate = React.createRef();
+        this.entryTime = React.createRef();
+        this.entryTag = React.createRef();
+        this.remindCheck = React.createRef();
+        this.privateCheck = React.createRef();
+
+        //Function bindings
+        this.saveEntry = this.saveEntry.bind(this);
+        this.myCallback=this.myCallback.bind(this);
+    }
+    render() {
+        let date = this.formatDate(this.props.date);
+        const { t, i18n } = this.props;
+        return(
+            &lt;div id="Create_entry" className="tabcontent">
+                &lt;h1>{t('entry:title' )}&lt;/h1>
+                &lt;form>
+                    &lt;div className={"topnav"}>
+                        &lt;input type="text" ref={this.entryName} placeholder={t('entry:formtitle')} pattern=".{2,}" required/>
+                        &lt;br/>&lt;br/>
+                        &lt;p>{t('entry:date')}&lt;/p>
+                        &lt;input type="date" defaultValue={date} ref={this.entryDate} pattern=".{8,}"/>
+                        &lt;br/>
+                        &lt;p>{t('entry:time')}&lt;/p>
+                        &lt;input type="time" ref={this.entryTime} pattern=".{6,}"/>
+                        &lt;br/>&lt;br/>
+                        {t('entry:remind')} &lt;input type="checkbox" ref={this.remindCheck}/>
+                        &lt;br/>
+                        {t('entry:private')} &lt;input type="checkbox" ref={this.privateCheck}/>
+                        &lt;br/>
+                        &lt;input type="text" ref={this.entryTag} placeholder={t('entry:tag')} pattern=".{2,}"/>
+                        &lt;br/>&lt;br/>&lt;br/>
+                        &lt;button id="save" type="button" onClick={this.saveEntry}>{t('entry:save')}&lt;/button>
+                    &lt;/div>
+                &lt;/form>
+            &lt;/div>
+        )
+    }
+
+    /**
+     * Runs all of the entry validation functions collectively
+     * @author Julia Virtanen
+     */
+    runFunctions(){
+        this.validateDate();
+        this.validateEntryname();
+        this.validateTime();
+        this.validateTag();
+        this.reminder();
+        this.hiddenEntry();
+    }
+
+    /**
+     * Function called to validate the input entry name
+     * @author Julia Virtanen
+     */
+    validateEntryname(){
+        var trimmedName = this.entryName.current.value.trim();
+        if (this.entryName.current.validity.patternMismatch||trimmedName.length&lt;=0) {
+            alert("The name is invalid");
+            en=0;
+        }
+        else {
+            en = 1;
+        }
+        console.log(en);
+    }
+
+    /**
+     * Function called to validate the input entry date
+     * @author Julia Virtanen
+     */
+    validateDate(){
+        var trimmedDate = this.entryDate.current.value.trim();
+        if (this.entryDate.current.validity.patternMismatch||trimmedDate.length&lt;=0) {
+            alert("Date is invalid");
+            ed=0;
+        }
+        else {
+            ed = 1;
+        }
+        console.log(ed);
+    }
+
+    /**
+     * Function called to validate the input entry time
+     * @author Julia Virtanen
+     */
+    validateTime(){
+        var trimmedTime = this.entryTime.current.value.trim();
+        if (this.entryTime.current.validity.patternMismatch||trimmedTime.length&lt;=0) {
+            alert("Time is invalid");
+            et=0;
+        }
+        else {
+            et = 1;
+        }
+        console.log(et);
+    }
+
+    /**
+     * Function called to validate the input entry tag
+     * @author Julia Virtanen
+     */
+    validateTag(){
+        if (this.entryTag.current.validity.patternMismatch) {
+            alert("Tag is invalid");
+            tu=0;
+        }
+        else {
+            tu = 1;
+        }
+        console.log(tu);
+    }
+
+    /**
+     * Function called to check the input reminder checkbox
+     * @author Julia Virtanen
+     */
+    reminder() {
+        if (this.remindCheck.current.checked === true){
+            mu=1;
+        }
+        else {
+            mu=0;
+        }
+        console.log(mu);
+
+    }
+
+    /**
+     * Function called to check the input hidden entry checkbox
+     * @author Julia Virtanen
+     */
+    hiddenEntry() {
+        if (this.privateCheck.current.checked === true){
+            hi=1;
+        }
+        else{
+            hi=0;
+        }
+        console.log(hi);
+    }
+
+    /**
+     * Function which fires when user submits the entry form
+     * @author Julia Virtanen
+     */
+    saveEntry() {
+        this.runFunctions();
+        if ((tu===1) &amp;&amp; (ed===1) &amp;&amp; (et===1) &amp;&amp; (en===1)){
+
+            var time=this.entryDate.current.value+' '+this.entryTime.current.value+':00';
+            console.log(time);
+
+
+            var reminder=0;
+            if(this.remindCheck.current.checked){
+                reminder=1;
+            }
+            var params={name:this.entryName.current.value,date:this.entryDate.current.value,time:time,rem:reminder,cat:null};
+            postToBackend(params,'entries',this.myCallback);
+
+        }
+        else {
+            console.log(en,ed, et, tu);
+            alert("There was a problem");
+        }
+    }
+
+    /**
+     * Function called to format the date to a specified string
+     * @author Markus Ojajärvi
+     * @param date: the date input
+     * @returns {string}
+     */
+    formatDate(date) {
+        var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+
+        if (month.length &lt; 2) month = '0' + month;
+        if (day.length &lt; 2) day = '0' + day;
+
+        return [year, month, day].join('-');
+    }
+
+    /**
+     * Callback function for the Ajax database request
+     * @author Noora Turunen
+     * @param result: the result of the saved entry
+     */
+    myCallback(result){
+        console.log(result);
+        alert("Entry added");
+        let popup = document.getElementsByClassName("popup")[0];
+        popup.style.display = "none";
+    }
+
+}
+export default withTranslation()(Entry);</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="CalendarDemo.html">CalendarDemo</a></li><li><a href="Entry.html">Entry</a></li><li><a href="Event.html">Event</a></li><li><a href="Groups.html">Groups</a></li><li><a href="Help.html">Help</a></li><li><a href="Middleware.html">Middleware</a></li><li><a href="Note.html">Note</a></li><li><a href="Profile.html">Profile</a></li><li><a href="Settings.html">Settings</a></li><li><a href="TabMenu.html">TabMenu</a></li><li><a href="TokenHandler.html">TokenHandler</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addContact">addContact</a></li><li><a href="global.html#addEntry">addEntry</a></li><li><a href="global.html#addEvent">addEvent</a></li><li><a href="global.html#ajaxFunction">ajaxFunction</a></li><li><a href="global.html#app">app</a></li><li><a href="global.html#bodyParser">bodyParser</a></li><li><a href="global.html#checkPassword">checkPassword</a></li><li><a href="global.html#checkUserCredentials">checkUserCredentials</a></li><li><a href="global.html#contactCallback">contactCallback</a></li><li><a href="global.html#cookieParser">cookieParser</a></li><li><a href="global.html#createCategory">createCategory</a></li><li><a href="global.html#createGroup">createGroup</a></li><li><a href="global.html#database">database</a></li><li><a href="global.html#deleteAccountAndAssociations">deleteAccountAndAssociations</a></li><li><a href="global.html#deleteCategory">deleteCategory</a></li><li><a href="global.html#deleteEventAndInvitees">deleteEventAndInvitees</a></li><li><a href="global.html#deleteFromBackend">deleteFromBackend</a></li><li><a href="global.html#editDate">editDate</a></li><li><a href="global.html#express">express</a></li><li><a href="global.html#getCalendarEntries">getCalendarEntries</a></li><li><a href="global.html#getCalendarEvents">getCalendarEvents</a></li><li><a href="global.html#getCalendarId">getCalendarId</a></li><li><a href="global.html#getContactProfiles">getContactProfiles</a></li><li><a href="global.html#getContacts">getContacts</a></li><li><a href="global.html#getEventsWhereInvited">getEventsWhereInvited</a></li><li><a href="global.html#getFromBackend">getFromBackend</a></li><li><a href="global.html#getGroupEntries">getGroupEntries</a></li><li><a href="global.html#getGroupEvents">getGroupEvents</a></li><li><a href="global.html#getGroupMembers">getGroupMembers</a></li><li><a href="global.html#getMemberProfiles">getMemberProfiles</a></li><li><a href="global.html#getMyCategories">getMyCategories</a></li><li><a href="global.html#getMyGroupIds">getMyGroupIds</a></li><li><a href="global.html#getMyGroups">getMyGroups</a></li><li><a href="global.html#getPlainContactIds">getPlainContactIds</a></li><li><a href="global.html#getPlainEventIds">getPlainEventIds</a></li><li><a href="global.html#getPlainMemberIds">getPlainMemberIds</a></li><li><a href="global.html#getProfileByAccId">getProfileByAccId</a></li><li><a href="global.html#getUser">getUser</a></li><li><a href="global.html#getUserInfoForDocument">getUserInfoForDocument</a></li><li><a href="global.html#getUsers">getUsers</a></li><li><a href="global.html#getWithoutParameters">getWithoutParameters</a></li><li><a href="global.html#handleReadyStateChange">handleReadyStateChange</a></li><li><a href="global.html#logIn">logIn</a></li><li><a href="global.html#myCallback">myCallback</a></li><li><a href="global.html#nodemailer">nodemailer</a></li><li><a href="global.html#orm">orm</a></li><li><a href="global.html#path">path</a></li><li><a href="global.html#port">port</a></li><li><a href="global.html#postPic">postPic</a></li><li><a href="global.html#postToBackend">postToBackend</a></li><li><a href="global.html#registerUserToDB">registerUserToDB</a></li><li><a href="global.html#registryMail">registryMail</a></li><li><a href="global.html#saveRegistry">saveRegistry</a></li><li><a href="global.html#searchGuest">searchGuest</a></li><li><a href="global.html#secret">secret</a></li><li><a href="global.html#submitting">submitting</a></li><li><a href="global.html#takeResponse">takeResponse</a></li><li><a href="global.html#updateBackend">updateBackend</a></li><li><a href="global.html#updateCalPrivacy">updateCalPrivacy</a></li><li><a href="global.html#updateNotifications">updateNotifications</a></li><li><a href="global.html#updateProfilePrivacy">updateProfilePrivacy</a></li><li><a href="global.html#updateUserInfo">updateUserInfo</a></li><li><a href="global.html#url">url</a></li><li><a href="global.html#validateFname">validateFname</a></li><li><a href="global.html#validateLname">validateLname</a></li><li><a href="global.html#validateMail">validateMail</a></li><li><a href="global.html#validatePassword">validatePassword</a></li><li><a href="global.html#.onclick">.onclick</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Thu May 09 2019 16:45:36 GMT+0300 (Suomen kesäaika)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: src/js/Settings.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: src/js/Settings.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react';
+import '../css/settings.css';
+import {withTranslation} from 'react-i18next';
+import Tooltip from "react-simple-tooltip";
+import {deleteFromBackend, getFromBackend, postToBackend, updateBackend} from "./Ajax";
+
+
+let self;
+
+/**
+ * Class for the Settings React component
+ * @author Julia Virtanen, Markus Ojajärvi, Noora Turunen
+ */
+class Settings extends React.Component{
+    constructor(props) {
+        super(props);
+         self = this;
+
+
+        //States
+        this.state={
+            tabToShow:'general',
+            categoryList:[&lt;option selected disabled value="">kikkelis&lt;/option>,
+                         &lt;option value="1">School&lt;/option>,
+                        &lt;option value="2">work&lt;/option>,
+                        &lt;option value="3">hobby&lt;/option>,
+                        &lt;option value="4">dog&lt;/option>],
+             };
+
+
+        //Setting-Refs
+        this.profileAll=React.createRef();
+        this.profileCon=React.createRef();
+        this.profileNo=React.createRef();
+
+        this.calendarAll=React.createRef();
+        this.calendarCon=React.createRef();
+        this.calendarNo=React.createRef();
+
+        this.contactNo=React.createRef();
+        this.contactApp=React.createRef();
+        this.contactMail=React.createRef();
+
+        this.groupNo=React.createRef();
+        this.groupApp=React.createRef();
+        this.groupMail=React.createRef();
+
+        this.eventNo=React.createRef();
+        this.eventApp=React.createRef();
+        this.eventMail=React.createRef();
+
+        this.responseNo=React.createRef();
+        this.responseApp=React.createRef();
+        this.responseMail=React.createRef();
+
+        this.reminderNo=React.createRef();
+        this.reminderApp=React.createRef();
+        this.reminderMail=React.createRef();
+
+        this.selectCategory=React.createRef();
+        this.addCategory=React.createRef();
+
+        /*
+        &lt;button className="tablinks" onClick={this.openSettings.bind(this, 'General')} id="defaultOpen">General&lt;/button>
+        &lt;button className="tablinks" onClick={this.openSettings.bind(this, 'Priv')}>Privacy&lt;/button>
+        &lt;button className="tablinks" onClick={this.openSettings.bind(this, 'Not')}>Notifications&lt;/button>*/
+
+        //Function bindings
+        this.openPrivacy=this.openPrivacy.bind(this);
+        this.openGeneral=this.openGeneral.bind(this);
+        this.openNotification=this.openNotification.bind(this);
+        this.saveNotifications=this.saveNotifications.bind(this);
+        this.savePrivacySettings=this.savePrivacySettings.bind(this);
+
+    }
+    render() {
+        const {t, i18n} = this.props;
+
+        if(this.state.tabToShow=='general'){
+            return (
+                &lt;div className="tab">
+                    &lt;button className="tablinks" onClick={this.openGeneral} id="defaultOpen">{t('settings:tabtitleg')}&lt;/button>
+                    &lt;button className="tablinks" onClick={this.openPrivacy}>{t('settings:tabtitlep')}&lt;/button>
+                    &lt;button className="tablinks" onClick={this.openNotification}>{t('settings:tabtitlen')}&lt;/button>
+
+                    &lt;div id="General" className="tabcontent">
+
+                        &lt;h3>{t('settings:generalTitle')}&lt;/h3>
+                        &lt;p>
+                            &lt;h4>{t('settings:categoriesTitle')}&lt;/h4>
+                            {t('settings:categoryDescription')}
+                            &lt;form>
+                                &lt;h5>{t('settings:deleteTitle')}&lt;/h5>
+                                &lt;select name="categories" id="categories" ref={this.selectCategory}>
+                                    {this.state.categoryList}
+                                &lt;/select>
+
+                                &lt;input type="button" value={t('settings:tabtitleg')} onClick={this.remove}/>
+
+                                &lt;h5>{t('settings:addTitle')}&lt;/h5>
+                                &lt;input type="text" id="kategoria" placeholder={t('settings:addPlaceholder')} pattern=".{2,}" ref={this.addCategory}/>
+                                &lt;input type="button" value="add" onClick={this.Add} />
+
+
+                                &lt;button onClick={() => i18n.changeLanguage('fi')}>fi&lt;/button>&lt;br/>
+                                &lt;button onClick={() => i18n.changeLanguage('en')}>en&lt;/button>
+
+                                &lt;input type="button" id="saveLang" value={t('settings:saveLanguage')} onClick={this.saveLang}/>
+                            &lt;/form>
+                        &lt;/p>
+                    &lt;/div>
+
+                &lt;/div>
+            );
+        }else if(this.state.tabToShow=='pri'){
+            return(&lt;div className="tab">
+                &lt;button className="tablinks" onClick={this.openGeneral} id="defaultOpen">{t('settings:tabtitleg')}&lt;/button>
+                &lt;button className="tablinks" onClick={this.openPrivacy}>{t('settings:tabtitlep')}&lt;/button>
+                &lt;button className="tablinks" onClick={this.openNotification}>{t('settings:tabtitlen')}&lt;/button>
+                &lt;div id="Priv" className="tabcontent">
+
+                &lt;h1>{t('settings:privacyTitle')}&lt;/h1>
+                &lt;p>{t('settings:privacyTitle')}&lt;/p>
+                &lt;h2>{t('settings:privacyDescription')}&lt;/h2>
+                {t('settings:showProDescription')}
+                &lt;input type="radio" id="pall"
+                       name="propri" value="all" ref={this.profileAll}/>
+                &lt;label htmlFor="pall">{t('settings:all')}&lt;/label>
+
+                &lt;input type="radio" id="pcont"
+                       name="propri" value="cont" checked ref={this.profileCon}/>
+                &lt;label htmlFor="pcont">{t('settings:myContacts')}&lt;/label>
+
+                &lt;input type="radio" id="pno"
+                       name="propri" value="no" ref={this.profileNo}/>
+                &lt;label htmlFor="pno">{t('settings:noOne')}&lt;/label>
+
+                &lt;br/>
+                &lt;h2>{t('settings:calendarTitle')}&lt;/h2>
+                            {t('settings:showCalDescription')}
+                &lt;input type="radio" id="call"
+                       name="calpri" value="all" ref={this.calendarAll}/>
+                &lt;label htmlFor="call">{t('settings:all')}&lt;/label>
+
+                &lt;input type="radio" id="ccont"
+                       name="calpri" value="cont" checked ref={this.calendarCon}/>
+
+                &lt;label htmlFor="ccont">{t('settings:myContacts')}&lt;/label>
+
+                &lt;input type="radio" id="cno"
+                       name="calpri" value="no" ref={this.calendarNo}/>
+                &lt;label htmlFor="cno">{t('settings:noOne')}&lt;/label>
+
+                &lt;br/>
+                &lt;input type="button" id="calprivacy" value={t('settings:saveChanges')} onClick={this.savePrivacySettings}/>
+            &lt;/div>
+            &lt;/div>);
+        }else{
+            return(&lt;div className="tab">
+                &lt;button className="tablinks" onClick={this.openGeneral} id="defaultOpen">{t('settings:tabtitleg')}&lt;/button>
+                &lt;button className="tablinks" onClick={this.openPrivacy}>{t('settings:tabtitlep')}&lt;/button>
+                &lt;button className="tablinks" onClick={this.openNotification}>{t('settings:tabtitlen')}&lt;/button>
+                &lt;div id="Not" className="tabcontent">
+
+                &lt;h1>{t('settings:notificationTitle')}&lt;/h1>
+                &lt;p>
+                                            {t('settings:contacts')}&lt;br/>
+                    &lt;input type="radio" name="contacts" id="contactsN" value="Nothing" ref={this.contactNo}/> {t('settings:nothing')}&lt;br/>
+                    &lt;input type="radio" name="contacts" id="contactsA" value="App" checked ref={this.contactApp}/>{t('settings:appNotification')}&lt;br/>
+                    &lt;input type="radio" name="contacts" id="contactsM" value="Mail" ref={this.contactMail}/>{t('settings:email')}&lt;br/>
+                    &lt;br/>&lt;br/>
+                    Group invites&lt;br/>
+                    &lt;input type="radio" name="gang" id="gangN" value="Nothing" ref={this.groupNo}/>{t('settings:nothing')}&lt;br/>
+                    &lt;input type="radio" name="gang" id="gangA" value="App" checked ref={this.groupApp}/> {t('settings:appNotification')}&lt;br/>
+                    &lt;input type="radio" name="gang" id="gangM" value="Mail" ref={this.groupMail}/>{t('settings:email')}&lt;br/>
+                    &lt;br/>&lt;br/>
+                    Event invites&lt;br/>
+                    &lt;input type="radio" name="events" id="eventsN" value="Nothing" ref={this.eventNo}/> {t('settings:nothing')}&lt;br/>
+                    &lt;input type="radio" name="events" id="eventsA" value="App" checked ref={this.eventApp}/> {t('settings:appNotification')}&lt;br/>
+                    &lt;input type="radio" name="events" id="eventsM" value="Mail" ref={this.eventMail}/> {t('settings:email')}&lt;br/>
+                    &lt;br/>&lt;br/>
+                    Responses &lt;br/>
+                    &lt;input type="radio" name="answers" id="answersN" value="Nothing" ref={this.responseNo}/> {t('settings:nothing')}&lt;br/>
+                    &lt;input type="radio" name="answers" id="answersA" value="App" checked ref={this.responseApp}/> {t('settings:appNotification')}&lt;br/>
+                    &lt;input type="radio" name="answers" id="answersM" value="Mail" ref={this.responseMail}/>{t('settings:email')}&lt;br/>
+                    &lt;br/>&lt;br/>
+                    Reminders&lt;br/>
+                    &lt;input type="radio" name="memb" id="membN" value="Nothing" ref={this.reminderNo}/>{t('settings:nothing')}&lt;br/>
+                    &lt;input type="radio" name="memb" id="membA" value="App" checked ref={this.reminderApp}/> {t('settings:appNotification')}&lt;br/>
+                    &lt;input type="radio" name="memb" id="membM" value="Mail" ref={this.reminderMail}/> {t('settings:email')}&lt;br/>
+
+                    &lt;input type="button" id="notifications" value={t('settings:saveChanges')}
+                           onClick={this.saveNotifications}/>
+                &lt;/p>
+            &lt;/div>
+            &lt;/div>);
+        }
+    }
+
+    componentDidMount(){
+        getFromBackend({},'category',this.categoryCallback);
+    }
+
+    /**
+     * @author Noora Turunen
+     * Function called by the Ajax database request
+     * @param result: the result list of the categories
+     */
+    categoryCallback(result){
+        var jresult=JSON.parse(result);
+        let names=[];
+        //console.log(jresult);
+
+        jresult.forEach(function(result){
+
+            names.push(&lt;option value={result.Name}>{result.Name}&lt;/option>)
+
+        });
+
+        self.setState({categoryList:names});
+
+    }
+
+    /**
+     * @author Noora Turunen
+     * Function called when user changes the tab
+     */
+    openGeneral(){
+        this.setState({tabToShow:'general'});
+    }
+    /**
+     * @author Noora Turunen
+     * Function called when user changes the tab
+     */
+    openPrivacy(){
+        this.setState({tabToShow:'pri'});
+    }
+    /**
+     * @author Noora Turunen
+     * Function called when user changes the tab
+     */
+    openNotification(){
+        this.setState({tabToShow:'not'});
+    }
+
+    /**
+     * Function called to validate the input category name
+     * @author Julia Virtanen
+     * @returns {boolean}
+     */
+    validateCategory(){
+        var trimmedName = self.addCategory.current.value.trim();
+        if (self.addCategory.current.validity.patternMismatch||trimmedName.length&lt;=0) {
+            alert("Not a good name");
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
+    /**
+     * @author Julia Virtanen, Noora Turunen
+     * Function called to insert the category into the database
+     */
+    Add() {
+        let valid=self.validateCategory();
+        if(valid) {
+
+            let name = self.addCategory.current.value;
+            console.log(name);
+
+            postToBackend({name: name}, 'category', self.addCallback);
+        }
+    };
+
+    /**
+     * Callback function fired from the Ajax database request method postToBackend
+     * @param result: the saved category
+     * @author Noora Turunen
+     */
+    addCallback(result){
+        self.addCategory.current.value='';
+        //console.log(result);
+        self.componentDidMount();
+        alert('new category added');
+    }
+
+    /**
+     * Function called to remove a category from the database
+     * @author Noora Turunen
+     */
+    remove() {
+        var name=self.selectCategory.current.value;
+        console.log(name);
+        deleteFromBackend({name:name},'category',self.removeCallback);
+        //var x = document.getElementById("categories");
+        //x.remove(x.selectedIndex);
+    }
+
+    /**
+     * Callback function fired from the Ajax database request method postToBackend
+     * @param result: the removed category
+     */
+    removeCallback(result){
+        console.log(result);
+        alert('category removed');
+        self.componentDidMount();
+    }
+
+    /**
+     * Function called to check the notification settings of the user
+     * @author Julia Virtanen
+     * @returns {*}
+     */
+    contacts() {
+        var connot;
+
+        if (this.contactNo.current.checked) {
+            connot=0;
+        }
+        else if (this.contactApp.current.checked){
+            connot=1;
+        }
+        else if (this.contactMail.current.checked) {
+            connot=2;
+        }
+        return connot;
+    }
+
+    /**
+     * Function called to set the notification settings of the group
+     * @author Julia Virtanen
+     * @returns {*}
+     */
+    gangs() {
+        var gang;
+
+        if (this.groupNo.current.checked) {
+            gang=0;
+        }
+        else if (this.groupApp.current.checked){
+            gang=1;
+        }
+        else if (this.groupMail.current.checked) {
+            gang=2;
+        }
+        return gang;
+    }
+
+    /**
+     * Function called to set the notification settings for events
+     * @author Julia Virtanen
+     * @returns {*}
+     */
+    events() {
+        var eve;
+
+        if (this.eventNo.current.checked) {
+            eve=0;
+        }
+        else if (this.eventApp.current.checked){
+            eve=1;
+        }
+        else if (this.eventMail.current.checked) {
+            eve=2;
+        }
+        return eve;
+    }
+
+    /**
+     * Function called to set the notification settings for the invitations
+     * @author Julia Virtanen
+     * @returns {*}
+     */
+    answers() {
+        var an;
+
+        if (this.responseNo.current.checked) {
+            an=0;
+        }
+        else if (this.responseApp.current.checked){
+            an=1;
+        }
+        else if (this.responseMail.current.checked) {
+            an=2;
+        }
+        return an;
+    }
+
+    /**
+     * Function called to set the notification settings for the group invitations
+     * @author Julia Virtanen
+     * @returns {*}
+     */
+    membfunction() {
+        var me;
+
+        if (this.reminderNo.current.checked) {
+            me=0;
+        }
+        else if (this.reminderApp.current.checked){
+            me=1;
+        }
+        else if (this.reminderMail.current.checked) {
+            me=2;
+        }
+        return me;
+    }
+
+    /**
+     * Function called to save the language setting
+     * @author Julia Virtanen
+     */
+    saveLang() {
+        var kieli;
+
+        if(document.getElementById('fin').checked) {
+            kieli=1;
+        }
+        else if(document.getElementById('eng').checked) {
+            kieli=0;
+        }
+        console.log(kieli)
+    }
+
+    /**
+     * Function called to collectively run all the setting functions
+     * @author Julia Virtanen
+     */
+    saveNotifications() {
+        let con=this.contacts();
+        let gan=this.gangs();
+        let eve=this.events();
+        let res=this.answers();
+        let rem=this.membfunction();
+
+        console.log(con,gan,eve,res,rem);
+        let params={conNot:con,eveNot:eve,ganNot:gan,ansNot:res,remNot:rem};
+        updateBackend(params,'notifications',this.notificationCallback);
+    }
+
+    /**
+     * Function of the database request
+     * @author Noora Turunen
+     * @param result
+     */
+    notificationCallback(result){
+        console.log(result);
+        alert('updated');
+    }
+
+    /**
+     * Function called to set the profile privacy setting
+     * @author Julia Virtanen
+     * @returns {number}
+     */
+    getProfilePrivacy(){
+        if(this.profileAll.current.checked){
+            return 0;
+        }else if(this.profileCon.current.checked){
+            return 1;
+        }else if(this.profileNo.current.checked){
+            return 2;
+        }
+    }
+
+    /**
+     * Function called to set the user's calendar privacy settings
+     * @author Julia Virtanen
+     * @returns {number}
+     */
+    getCalendarPrivacy(){
+        if(this.calendarAll.current.checked){
+            return 0;
+        }else if(this.calendarCon.current.checked){
+            return 1;
+        }else if(this.calendarNo.current.checked){
+            return 2;
+        }
+    }
+
+    /**
+     * Function called to save the user's privacy settings
+     * @author Noora Turunen
+     */
+    savePrivacySettings(){
+        let pro=this.getProfilePrivacy();
+        let cal=this.getCalendarPrivacy();
+        let params={pro:pro,cal:cal};
+        updateBackend(params,'privacy',this.privacyCallback);
+    }
+
+    /**
+     * Callback function of the Ajax database request
+     * @param result: result of the privacy settings request
+     */
+    privacyCallback(result){
+        console.log(result);
+        alert('updated');
+    }
+
+
+
+}
+
+export default withTranslation() (Settings);
+
+
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="CalendarDemo.html">CalendarDemo</a></li><li><a href="Entry.html">Entry</a></li><li><a href="Event.html">Event</a></li><li><a href="Groups.html">Groups</a></li><li><a href="Help.html">Help</a></li><li><a href="Middleware.html">Middleware</a></li><li><a href="Note.html">Note</a></li><li><a href="Profile.html">Profile</a></li><li><a href="Settings.html">Settings</a></li><li><a href="TabMenu.html">TabMenu</a></li><li><a href="TokenHandler.html">TokenHandler</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addContact">addContact</a></li><li><a href="global.html#addEntry">addEntry</a></li><li><a href="global.html#addEvent">addEvent</a></li><li><a href="global.html#ajaxFunction">ajaxFunction</a></li><li><a href="global.html#app">app</a></li><li><a href="global.html#bodyParser">bodyParser</a></li><li><a href="global.html#checkPassword">checkPassword</a></li><li><a href="global.html#checkUserCredentials">checkUserCredentials</a></li><li><a href="global.html#contactCallback">contactCallback</a></li><li><a href="global.html#cookieParser">cookieParser</a></li><li><a href="global.html#createCategory">createCategory</a></li><li><a href="global.html#createGroup">createGroup</a></li><li><a href="global.html#database">database</a></li><li><a href="global.html#deleteAccountAndAssociations">deleteAccountAndAssociations</a></li><li><a href="global.html#deleteCategory">deleteCategory</a></li><li><a href="global.html#deleteEventAndInvitees">deleteEventAndInvitees</a></li><li><a href="global.html#deleteFromBackend">deleteFromBackend</a></li><li><a href="global.html#editDate">editDate</a></li><li><a href="global.html#express">express</a></li><li><a href="global.html#getCalendarEntries">getCalendarEntries</a></li><li><a href="global.html#getCalendarEvents">getCalendarEvents</a></li><li><a href="global.html#getCalendarId">getCalendarId</a></li><li><a href="global.html#getContactProfiles">getContactProfiles</a></li><li><a href="global.html#getContacts">getContacts</a></li><li><a href="global.html#getEventsWhereInvited">getEventsWhereInvited</a></li><li><a href="global.html#getFromBackend">getFromBackend</a></li><li><a href="global.html#getGroupEntries">getGroupEntries</a></li><li><a href="global.html#getGroupEvents">getGroupEvents</a></li><li><a href="global.html#getGroupMembers">getGroupMembers</a></li><li><a href="global.html#getMemberProfiles">getMemberProfiles</a></li><li><a href="global.html#getMyCategories">getMyCategories</a></li><li><a href="global.html#getMyGroupIds">getMyGroupIds</a></li><li><a href="global.html#getMyGroups">getMyGroups</a></li><li><a href="global.html#getPlainContactIds">getPlainContactIds</a></li><li><a href="global.html#getPlainEventIds">getPlainEventIds</a></li><li><a href="global.html#getPlainMemberIds">getPlainMemberIds</a></li><li><a href="global.html#getProfileByAccId">getProfileByAccId</a></li><li><a href="global.html#getUser">getUser</a></li><li><a href="global.html#getUserInfoForDocument">getUserInfoForDocument</a></li><li><a href="global.html#getUsers">getUsers</a></li><li><a href="global.html#getWithoutParameters">getWithoutParameters</a></li><li><a href="global.html#handleReadyStateChange">handleReadyStateChange</a></li><li><a href="global.html#logIn">logIn</a></li><li><a href="global.html#myCallback">myCallback</a></li><li><a href="global.html#nodemailer">nodemailer</a></li><li><a href="global.html#orm">orm</a></li><li><a href="global.html#path">path</a></li><li><a href="global.html#port">port</a></li><li><a href="global.html#postPic">postPic</a></li><li><a href="global.html#postToBackend">postToBackend</a></li><li><a href="global.html#registerUserToDB">registerUserToDB</a></li><li><a href="global.html#registryMail">registryMail</a></li><li><a href="global.html#saveRegistry">saveRegistry</a></li><li><a href="global.html#searchGuest">searchGuest</a></li><li><a href="global.html#secret">secret</a></li><li><a href="global.html#submitting">submitting</a></li><li><a href="global.html#takeResponse">takeResponse</a></li><li><a href="global.html#updateBackend">updateBackend</a></li><li><a href="global.html#updateCalPrivacy">updateCalPrivacy</a></li><li><a href="global.html#updateNotifications">updateNotifications</a></li><li><a href="global.html#updateProfilePrivacy">updateProfilePrivacy</a></li><li><a href="global.html#updateUserInfo">updateUserInfo</a></li><li><a href="global.html#url">url</a></li><li><a href="global.html#validateFname">validateFname</a></li><li><a href="global.html#validateLname">validateLname</a></li><li><a href="global.html#validateMail">validateMail</a></li><li><a href="global.html#validatePassword">validatePassword</a></li><li><a href="global.html#.onclick">.onclick</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Thu May 09 2019 16:45:37 GMT+0300 (Suomen kesäaika)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

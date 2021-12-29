@@ -1,0 +1,11 @@
+{
+  "emailPasswordWrong":"Email or password is wrong",
+  "passwordSent":"New password was sent via email",
+  "nameNotCorrect":"First name must be at least two letters",
+  "emailNotCorrect":"Email must be valid",
+  "passwordsDontMatch":"Passwords don't match",
+  "addingSuccessful":"added to your calendar",
+  "addFail":"There was a server error. Adding failed. If the error continues contact us"
+
+
+}

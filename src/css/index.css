@@ -1,0 +1,68 @@
+body {
+    margin: 0;
+    font-family: "Alef", serif;
+    background: url("../img/sihteeritausta.jpg");
+    background-size: cover;
+    overflow: hidden;
+}
+.sidebar {
+    float: left;
+    padding: 20px 30px;
+    background: url("../img/profile.png");
+    background-size: 100% 100%;
+    width: 5%;
+    height: 1000px;
+    margin-right: -4%;
+    transition: .2s ease;
+}
+
+#header {
+    overflow: hidden;
+    background: url("../img/header.png");
+    background-size: 100% 100%;
+    padding-top: 10px;
+    padding-bottom: 30px;
+    padding-left: 5%;
+}
+#mainview{
+    overflow: hidden;
+}
+#intro {
+    margin-left: 10%;
+}
+#calendar {
+    float: right;
+    width: 70%;
+    margin-right: 2%;
+    border: 1px solid #414656;
+    transition: 0s ease;
+}
+#profile {
+    padding: 10px 20%;
+}
+
+/*tooltipit*/
+
+ .icon:hover .tooltip {
+        display:block;
+    }
+
+    .tooltip {
+        display: none;
+        color: lightgrey;
+        margin-left: 0px; /* moves the tooltip to the right */
+        margin-top: 60px; /* moves it down */
+        position: absolute;
+        z-index: 1000;
+        }
+.icon:hover .tooltip2 {
+    display:block;
+}
+.tooltip2 {
+    display: none;
+    color: black;
+    margin-left: 0px; /* moves the tooltip to the right */
+    margin-top: 60px; /* moves it down */
+    position: absolute;
+    z-index: 1000;
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>moiccu.</title>
+    <link href='https://fonts.googleapis.com/css?family=Alef' rel='stylesheet'>
+
+
+</head>
+<body>
+<div class="icon" id="iconProfile"><span class="tooltip">Profile</span>
+    <label class="toggle" for="toggle-1"/>
+</div>
+<div class="icon" id="iconGroup"><span class="tooltip">Groups contacts</span>
+    <label class="toggle" for="toggle-1"/>
+</div>
+<div class="icon" id="iconEvent"><span class="tooltip">Event</span></div>
+<div class="icon" id="iconEntry"><span class="tooltip">Entry</span></div>
+<div class="icon" id="iconNote"><span class="tooltip">Note</span></div>
+
+<input type="checkbox" id="toggle-1">
+<div class="sidebar">
+    <div id="profile"></div>
+</div>
+
+
+<div id="header">
+    <div class="icon" id="iconLogo"></div>
+    <input type="text"  id="search"  placeholder="search people" />
+    <div id="dropdown">
+        <div id="dropdown-content">
+            <ul id="searchList" style="list-style-type:none;">
+
+            </ul>
+
+        </div>
+    </div>
+    <div class="icon" id="iconHelp"><span class="tooltip2">Information</span></div>
+    <div class="icon" id="iconSettings"><span class="tooltip2">Settings</span></div>
+    <div class="icon" id="iconBell"><span class="tooltip2">Notifications</span></div>
+</div>
+<div id="mainview">
+    <div id="intro"><h1></h1></div>
+
+    <div id="calendar"></div>
+</div>
+
+
+<article id="popup">
+    <div id="myPopup" class="popup">
+
+        <div id="content" class="popup-content">
+            <span class="close">&times;</span>
+            <article id="popup-text"></article>
+        </div>
+    </div>
+</article>
+
+</body>
+</html>

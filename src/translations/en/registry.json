@@ -1,0 +1,13 @@
+{
+  "registryTitle":"Register your moiccu.",
+  "firstName":"First name",
+  "firstNamePlaceholder":"Mirccu",
+  "lastName":"Last name",
+  "lastNamePlaceholder":"Moiccu",
+  "email":"Email",
+  "emailPlaceholder":"moiccu.mirccu@mail.com",
+  "password":"Password",
+  "passwordPlaceholder":"Password1",
+  "confirmPassword":"Confirm password",
+  "submitButton":"Submit"
+}

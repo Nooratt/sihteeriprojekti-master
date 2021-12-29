@@ -1,0 +1,17 @@
+{
+  "groupTitle":"My Groups: ",
+  "addGroupButton":"Add group",
+  "members":"Members",
+  "addEventButton":"Add event",
+  "addGroupTitle":"Add group",
+  "groupName":"Group name:",
+  "groupNamePlaceholder":"My team",
+  "searchUsersTitle":"Search users to add",
+  "userSearchPlaceholder":"Mirccu Moiccu",
+  "contactTitle":"My Contacts:",
+
+
+  "saveButton":"Save",
+  "cancelButton":"Cancel"
+
+}

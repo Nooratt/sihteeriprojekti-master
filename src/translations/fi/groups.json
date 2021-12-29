@@ -1,0 +1,17 @@
+{
+  "groupTitle":"Ryhmäni: ",
+  "addGroupButton":"Lisää ryhmä",
+  "members":"Jäsenet:",
+  "addEventButton":"Lisää tapahtuma",
+  "addGroupTitle":"Lisää ryhmä",
+  "groupName":"Ryhmän nimi:",
+  "groupNamePlaceholder":"Tiimi",
+  "searchUsersTitle":"Etsi käyttäjiä lisättäväksi:",
+  "userSearchPlaceholder":"Mirccu Moiccu",
+  "contactTitle":"Kontaktini:",
+
+
+  "saveButton":"Tallenna",
+  "cancelButton":"Peruuta"
+
+}

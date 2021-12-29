@@ -1,0 +1,13 @@
+{
+  "title": "Create a new entry",
+  "formtitle": "Entry title",
+  "date": "Entry date",
+  "time": "Entry time",
+  "remind": "Remind me",
+  "private": "Private entry",
+  "tag":"tag",
+  "save":"Save",
+  "event":"Event",
+  "entry":"Entry",
+  "note":"Note"
+}

@@ -1,0 +1,38 @@
+{
+   "introtitle": "Moiccu!\n Tervetuloa omaan moiccu-sovellukseesi.",
+   "intro1":"Sovelluksessa voit luoda omaan henkilökohtaiseen kalenteriisi tapahtumia ja merkintöjä,",
+   "intro2":"luoda kontakteja sekä ryhmiä, nähdä ryhmiesi yhdistetyt kalenterit, tehdä muistiinpanoja ja linkittää ne kalenteriisi.",
+
+    "calendartitle": "Kalenteri",
+    "calendar1": "Kalenteristasi näet omat merkintäsi sekä tapahtumat, joihin olet ilmoittanut osallistuvasi.",
+    "calendar2":"Valittua päivää klikkaamalla voit lisätä kyseiselle päivälle oman merkinnän tai luoda tapahtuman.",
+    "calendar3": "Voit tarkastella haluamaasi merkintää tai tapahtumaa tarkemmin klikkaamalla sitä.",
+    "calendar4":" Jos haluat luoda merkinnän, joka näkyy vain sinulle, valitse merkintää luodessasi piilota muilta käyttäjiltä.",
+    "calendar5": "Kalenterin oikealla puolella näet värikoodein omat ryhmäsi.",
+    "calendar6": "Ryhmää klikkaamalla ryhmän jäsenien kalenterit sulautetaan sinun kalenteriisi. Kalenterin alapuolella näet omat kategoriasi.",
+    "calendar7": "Niiden avulla voit suodattaa kalenterissasi näkyviä merkintöjä ja tapahtumia.",
+    "calendar8": "Voit valita, haluatko kalenterisi näkyvän viikko vai kuukausi kerrallaan.",
+
+    "profiletitle":"Profiili",
+    "profile1":"Vasemman sivupalkin profiili-ikonia klikkaamalla aukeaa profiilisi tiedot. Tietoja voit muokata painamalla muokkaa-painiketta.",
+    "profile2":" Kaikissa kentissä on oltava tekstiä. Tallenna muutokset painamalla tallenna-painiketta.",
+    "profile3":"Profiilikuvaa klikkaamalla pääset vaihtamaan kuvaa tai muokkaamaan nykyistä kuvaasi. ",
+    "profile4":"Muita tietojasi voit muokata asetuksista, jonne pääset klikkaamalla oikean yläkulman ratas-symbolia.",
+
+    "settingstitle":"Asetukset",
+    "settings1":"Asetukset on jaettu kolmeen eri välilehteen; yleiset asetukset, yksityisyysasetukset ja ilmoitusasetukset.",
+    "settings2": "Yleisissä asetuksissa voit määritellä omat kategoriasi, joiden avulla voit suodattaa merkintöjä ja tapahtumia kalenterissa.",
+    "settings3": "Voit luoda haluamasi määrän kategorioita, ja poistaa niitä, joita et enää käytä.",
+    "settings4":"Jos poistat kategorian, muuttuvat siihen kategoriaan kuuluvat menot kategoriattomiksi. Yleisitä asetuksista voit myös valita sovelluksen kielen.",
+    "settings5":"Yksityisyysasetuksista voit valita, kuka näkee tietosi. Voit erikseen määritellä profiilitietosi ja kalenterisi näkyvyyden.",
+    "settings6":"Jos valitset profiilisi tietojen näkyvyydeksi ”ei kukaan” tai ”kontaktit”, ei profiiliasi näe myöskään hakutoiminnolla.",
+    "settings7":"Jos haluat käyttää sovellusta omana henkilökohtaisena kalenterinasi, valitse molempien tietojen näkyvyydeksi ei kukaan.",
+    "settings8": "Näin kukaan ei löydä sinua, eikä voi tarkastella kalenteriasi. Ilmoitusasetuksista voit valita, haluatko toiminnoista sähköposti-ilmoituksen vai sovellusilmoituksen.",
+    "settings9":" Voit määritellä kutsuille, vastauksille ja tapahtumista tai merkinnöistä muistuttamiselle omat ilmoitustavat.",
+    "settings11":"Halutessasi voit myös kytkeä ilmoitukset ja muistutukset kokonaan pois päältä.",
+
+    "grouptitle":"Ryhmät ja kontaktit",
+    "group1":"Sovelluksessa voit luoda omia ryhmiä, ja kutsua muita käyttäjiä ryhmääsi.",
+    "group2": "Ryhmän kalenterissa näkyvät kaikkien, jäsenien julkiseksi asettamat merkinnät ja tapahtumat.",
+    "group3":"Voit pyytää muita käyttäjiä kontakteiksesi. Kontakteillesi pystyt antamaan erilaiset oikeudet nähdä tietojasi."
+  }

@@ -1,0 +1,10 @@
+{
+  "logInTitle":"Log in",
+  "email":"Email",
+  "emailPlaceholder":"mirccu.moiccu@mail.com",
+  "password":"Password",
+  "passwordPlaceholder":"Password1",
+  "submitButton":"Submit",
+  "forgotLink":"Forgot your password?",
+  "registerLink":"Register"
+}

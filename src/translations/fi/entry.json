@@ -1,0 +1,13 @@
+{
+  "title": "Luo uusi merkintä",
+  "formtitle": "Otsikko",
+  "date": "Päivämäärä",
+  "time": "Kellonaika",
+  "remind": "Muistutus",
+  "private": "Piiloita merkintä",
+  "tag":"tunniste",
+  "save":"Tallenna",
+  "event":"Tapahtuma",
+  "entry":"Merkintä",
+  "note":"Muistiinpano"
+}
